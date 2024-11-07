@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { BlurImage } from "../blur-image";
 
 export const SkeletonOne = () => {
   return (
@@ -10,48 +9,23 @@ export const SkeletonOne = () => {
       <div className="w-full md:w-[90%] p-5 mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2 opacity-20 dark:opacity-60">
           <UserMessage>
-            I want to generate an image of two people, fighting outside a bar.
-            They fight to the core. Once they&apos;re done, they sit down and
-            drink beer.
+            I'd like interview questions for a software engineering internship. I've attached my resume.
           </UserMessage>
           <AIMessage>
-            Certainly, I&apos;m generating this picture for you in a while. BTW
-            are you talking about THAT movie?
+            Great! What's your expertise level and where are you applying?
           </AIMessage>
           <UserMessage>
-            I don&apos;t know what you&apos;re talking about.
+            It's for an internship at a major tech company.
           </UserMessage>
-          <AIMessage>Are you sure?</AIMessage>
+          <AIMessage>
+            Should I include systems design questions?
+          </AIMessage>
           <UserMessage>
-            Yes, I&apos;m sure. But if you&apos;re generating that scene, make
-            sure the fighters have clown shoes and rubber chickens instead of
-            fists!
+            Yes, please.
           </UserMessage>
-          <AIMessage>Affirmative, here&apos;s your image.</AIMessage>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 absolute inset-0">
-        <div className="p-2 border border-neutral-200 bg-neutral-100 dark:bg-neutral-800 dark:border-neutral-700 rounded-[32px] h-[250px] w-[250px] md:h-[300px] md:w-[300px] mx-auto flex-shrink-0 z-20 group-hover:scale-[1.02] transition duration-200">
-          <div className="p-2 bg-white dark:bg-black dark:border-neutral-700 border border-neutral-200 rounded-[24px] flex-shrink-0">
-            <BlurImage
-              src="/skeleton-one.png"
-              alt="header"
-              width={800}
-              height={800}
-              className="rounded-[20px] w-full h-full object-cover object-bottom aspect-square flex-shrink-0 grayscale"
-            />
-          </div>
-        </div>
-        <div className="p-2 border border-neutral-200 bg-neutral-100 dark:bg-neutral-800 dark:border-neutral-700 rounded-[32px] h-[250px] w-[250px] md:h-[300px] md:w-[300px] mx-auto flex-shrink-0 z-20 group-hover:scale-[1.02] transition duration-200">
-          <div className="p-2 bg-white dark:bg-black dark:border-neutral-700 border border-neutral-200 rounded-[24px] flex-shrink-0">
-            <BlurImage
-              src="/tyler.jpeg"
-              alt="header"
-              width={800}
-              height={800}
-              className="rounded-[20px] w-full h-full object-cover object-bottom aspect-square flex-shrink-0 grayscale"
-            />
-          </div>
+          <AIMessage>
+            Perfect! Your mock interview starts soon. Be confident, Asad!
+          </AIMessage>
         </div>
       </div>
       <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />

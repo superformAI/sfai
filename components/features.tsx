@@ -11,31 +11,31 @@ import { SkeletonThree } from "./skeletons/third";
 export const Features = () => {
   const features = [
     {
-      title: "Get cracked using our AI Mock Interviewer",
+      title: "Confidence comes from Readiness!",
       description:
-        "Generate images from a text prompt, a video, or a video segment in bulk at the speed of light.",
+        "Generate personalized behavioral and technical interviews based off your own resume, Job choice and expertise level at the speed of light.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-4 border-b border-r dark:border-neutral-800",
     },
     {
-      title: "Talk to our Superform AI",
+      title: "Talk to our Superform AI Tutor",
       description:
-        "Create Chatbots with a single button click. Customize as per your requirements and the AI will take care of the rest.",
+        "Learn technical concepts like never before! With a single button click you can start your jounrey to become the best at what you do!. Customize as per your requirements and the AI will take care of the rest.",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 md:col-span-2 dark:border-neutral-800",
     },
     {
       title: "Apply and track your job applications",
       description:
-        "Whether it's OpenAI, GroQ or Your Mom's Basement LLM, we support everything.",
+        "Whether it's 10 applications or 1000, you can track all your applications in one place!.",
       skeleton: <SkeletonThree />,
       className: "col-span-1 md:col-span-3 border-r dark:border-neutral-800",
     },
     {
       title: "Learn Industry standard technical skills",
       description:
-        "With our blazing fast, state of the art, cutting edge, we are so back cloud servies (read AWS) - you can deploy your model in seconds.",
+        "Learn technical concepts like never before! With a single button click you can start your jounrey to become the best at what you do!. Customize as per your requirements and the AI will take care of the rest.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 md:col-span-3",
     },

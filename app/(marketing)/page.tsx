@@ -15,9 +15,9 @@ export default function Home() {
       </div>
       <Container className="flex min-h-screen flex-col items-center justify-between ">
         <Hero />
-        <Companies />
         <Features />
         <GridFeatures />
+        <Companies />
         <Testimonials />
       </Container>
       <div className="relative">

@@ -53,7 +53,7 @@ export const GridFeatures = () => {
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "Application Autofill",
+      title: "Personalized Job Board",
       description: "I just ran out of copy ideas. Accept my sincere apologies",
       icon: <IconHeart />,
     },

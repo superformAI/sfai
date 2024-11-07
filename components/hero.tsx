@@ -5,9 +5,7 @@ import Balancer from "react-wrap-balancer";
 import { Button } from "./button";
 import { HiArrowRight } from "react-icons/hi2";
 import { Badge } from "./badge";
-import { motion, AnimatePresence } from "framer-motion";
-
-import Image from "next/image";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Link } from "next-view-transitions";
 
@@ -18,15 +16,11 @@ export const Hero = () => {
     "Create the Career You Desire",
     "Leading You to New Heights",
   ];
-  const [currentSlogan, setCurrentSlogan] = useState(slogans[0]);
+  const [currentSloganIndex, setCurrentSloganIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlogan((prev) => {
-        const currentIndex = slogans.indexOf(prev);
-        const nextIndex = (currentIndex + 1) % slogans.length;
-        return slogans[nextIndex];
-      });
+      setCurrentSloganIndex((prevIndex) => (prevIndex + 1) % slogans.length);
     }, 4000); // Change slogan every 4 seconds
 
     return () => clearInterval(interval);
@@ -68,21 +62,25 @@ export const Hero = () => {
       >
         <Balancer>Superform AI</Balancer>
       </motion.h1>
-      <AnimatePresence mode="wait">
-        <motion.h2
-          key={currentSlogan}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            duration: 1.5,
-            ease: "easeInOut",
-          }}
-          className="text-xl md:text-3xl lg:text-5xl font-medium max-w-4xl mx-auto text-center mt-2 font-[SF Pro Text,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif]"
-        >
-          <Balancer>{currentSlogan}</Balancer>
-        </motion.h2>
-      </AnimatePresence>
+      <div className="relative h-[2.5rem] md:h-[3rem] lg:h-[4rem] flex items-center justify-center overflow-hidden mt-2">
+        {slogans.map((slogan, index) => (
+          <motion.h2
+            key={slogan}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              opacity: currentSloganIndex === index ? 1 : 0,
+              y: currentSloganIndex === index ? 0 : -20,
+            }}
+            transition={{
+              duration: 1,
+              ease: "easeInOut",
+            }}
+            className="absolute text-xl md:text-3xl lg:text-5xl font-medium max-w-4xl text-center font-[SF Pro Text,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif]"
+          >
+            <Balancer>{slogan}</Balancer>
+          </motion.h2>
+        ))}
+      </div>
       <motion.p
         initial={{
           y: 40,
@@ -100,7 +98,7 @@ export const Hero = () => {
         className="text-center mt-6 text-base md:text-xl text-muted dark:text-muted-dark max-w-3xl mx-auto relative z-10"
       >
         <Balancer>
-        Superform AI brings together career-focused tools, seamlessly integrating modern AI to boost your professional journey—all in one platform..
+          Superform AI brings together career-focused tools, seamlessly integrating modern AI to boost your professional journey—all in one platform.
         </Balancer>
       </motion.p>
       <motion.div
@@ -119,7 +117,7 @@ export const Hero = () => {
         }}
         className="flex items-center gap-4 justify-center mt-6 relative z-10"
       >
-        <Button>Get started</Button>
+        <Button>Join Waitlist</Button>
         <Button
           variant="simple"
           as={Link}
@@ -130,18 +128,6 @@ export const Hero = () => {
           <HiArrowRight className="text-muted group-hover:translate-x-1 stroke-[1px] h-3 w-3 transition-transform duration-200 dark:text-muted-dark" />
         </Button>
       </motion.div>
-      <div className="p-4 border border-neutral-200 bg-neutral-100 dark:bg-neutral-800 dark:border-neutral-700 rounded-[32px] mt-20 relative">
-        <div className="absolute inset-x-0 bottom-0 h-40 w-full bg-gradient-to-b from-transparent via-white to-white dark:via-black/50 dark:to-black scale-[1.1] pointer-events-none" />
-        <div className="p-2 bg-white dark:bg-black dark:border-neutral-700 border border-neutral-200 rounded-[24px]">
-          <Image
-            src="/header.png"
-            alt="header"
-            width={1920}
-            height={1080}
-            className="rounded-[20px]"
-          />
-        </div>
-      </div>
     </div>
   );
 };

@@ -113,14 +113,14 @@ const testimonials = [
     designation: "Performance Manager",
   },
   {
-    name: "Kathy Adams",
+    name: "Onkar Singh",
     quote:
       "It helps us achieve what was once thought impossible. The AI's capabilities are groundbreaking and have opened new avenues for us.",
-    src: "https://i.pravatar.cc/150?img=13",
-    designation: "Innovation Lead",
+    src: "/OS.png",
+    designation: "Security Engineer",
   },
   {
-    name: "Leo Carter",
+    name: "Niya Patel",
     quote:
       "Transformative technology with real impact. It has streamlined our operations and brought unprecedented efficiency to our processes.",
     src: "https://i.pravatar.cc/150?img=14",
