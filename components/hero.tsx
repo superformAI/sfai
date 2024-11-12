@@ -60,7 +60,15 @@ export const Hero = () => {
         }}
         className="text-2xl md:text-4xl lg:text-8xl font-semibold max-w-6xl mx-auto text-center mt-6 font-[SF Pro Text,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif]"
       >
-        <Balancer>Superform AI</Balancer>
+        <Balancer>
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Super
+          </span>
+          form{" "}
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            AI
+          </span>
+        </Balancer>
       </motion.h1>
       <div className="relative h-[2.5rem] md:h-[3rem] lg:h-[4rem] flex items-center justify-center overflow-hidden mt-2">
         {slogans.map((slogan, index) => (
@@ -117,7 +125,7 @@ export const Hero = () => {
         }}
         className="flex items-center gap-4 justify-center mt-6 relative z-10"
       >
-        <Button>Join Waitlist</Button>
+        <Button>Join the waitlist to be part of early beta access!</Button>
         <Button
           variant="simple"
           as={Link}

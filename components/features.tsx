@@ -1,3 +1,5 @@
+// Updated Features component
+
 import React from "react";
 import { Heading } from "./heading";
 import { Subheading } from "./subheading";
@@ -11,41 +13,41 @@ import { SkeletonThree } from "./skeletons/third";
 export const Features = () => {
   const features = [
     {
-      title: "Confidence comes from Readiness!",
+      title: "Feeling Lost in Your Job Search?",
       description:
-        "Generate personalized behavioral and technical interviews based off your own resume, Job choice and expertise level at the speed of light.",
+        "Discover customized guidance to prepare you for every step, from building confidence to tackling complex interview questions.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-4 border-b border-r dark:border-neutral-800",
     },
     {
-      title: "Talk to our Superform AI Tutor",
+      title: "Overwhelmed by Learning New Skills?",
       description:
-        "Learn technical concepts like never before! With a single button click you can start your jounrey to become the best at what you do!. Customize as per your requirements and the AI will take care of the rest.",
+        "Get personalized support to learn technical concepts with ease, at your own pace, with help tailored to your unique needs.",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 md:col-span-2 dark:border-neutral-800",
     },
     {
-      title: "Apply and track your job applications",
+      title: "Struggling to Stay Organized with Applications?",
       description:
-        "Whether it's 10 applications or 1000, you can track all your applications in one place!.",
+        "Manage and track all your applications seamlessly in one place, giving you peace of mind and a clear overview of your progress.",
       skeleton: <SkeletonThree />,
       className: "col-span-1 md:col-span-3 border-r dark:border-neutral-800",
     },
     {
-      title: "Learn Industry standard technical skills",
+      title: "Need Help with Industry Standards?",
       description:
-        "Learn technical concepts like never before! With a single button click you can start your jounrey to become the best at what you do!. Customize as per your requirements and the AI will take care of the rest.",
+        "Gain access to resources that help you understand and master the latest industry-standard skills, all customized for your career goals.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 md:col-span-3",
     },
   ];
+
   return (
     <div className="relative z-20 py-10 md:py-40">
-      <Heading as="h2">AI tools to help you in an All in one Platform</Heading>
+      <Heading as="h2">AI Tools to Support Your Career Growth</Heading>
       <Subheading className="text-center ">
-        From Image generation to video generation, Everything AI has APIs for
-        literally everything. It can even create this website copy for you.
+        Tackle career challenges with innovative solutions tailored just for you.
       </Subheading>
 
       <div className="relative">
@@ -54,7 +56,7 @@ export const Features = () => {
             <FeatureCard key={feature.title} className={feature.className}>
               <FeatureTitle>{feature.title}</FeatureTitle>
               <FeatureDescription>{feature.description}</FeatureDescription>
-              <div className=" h-full w-full">{feature.skeleton}</div>
+              <div className="h-full w-full">{feature.skeleton}</div>
             </FeatureCard>
           ))}
         </div>
@@ -65,7 +67,6 @@ export const Features = () => {
             width: "120%",
           }}
         />
-
         <GridLineHorizontal
           style={{
             bottom: 0,
@@ -73,7 +74,6 @@ export const Features = () => {
             width: "120%",
           }}
         />
-
         <GridLineVertical
           style={{
             top: "-10%",

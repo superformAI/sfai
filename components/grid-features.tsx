@@ -13,53 +13,49 @@ import {
 export const GridFeatures = () => {
   const features = [
     {
-      title: "AI Resume Builder",
-      description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
+      title: "Crafting the Perfect Resume Feels Overwhelming?",
+      description: "Empower your professional profile with guidance tailored for engineers, developers, and dreamers alike.",
       icon: <IconTerminal2 />,
     },
     {
-      title: "AI Cover letter",
-      description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
+      title: "Struggling to Write a Standout Cover Letter?",
+      description: "Get support that makes cover letter writing as simple and impactful as possible.",
       icon: <IconEaseInOut />,
     },
     {
-      title: "AI ATS System",
-      description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
+      title: "Worried About ATS Compatibility?",
+      description: "Ensure your application stands out with a system that works for you, not against you.",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "AI tutor",
-      description: "We just cannot be taken down by anyone.",
+      title: "Need Help Learning Complex Concepts?",
+      description: "Receive personalized guidance that makes learning technical skills manageable and effective.",
       icon: <IconCloud />,
     },
     {
-      title: "Cold Email templates",
-      description: "You can simply share passwords instead of buying new seats",
+      title: "Not Sure How to Reach Out to Potential Employers?",
+      description: "Access thoughtfully crafted templates to make connections and opportunities feel within reach.",
       icon: <IconRouteAltLeft />,
     },
     {
-      title: "Linkedin Revamp",
-      description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
+      title: "Your LinkedIn Profile Needs a Refresh?",
+      description: "Transform your profile to better reflect your skills, experience, and potential.",
       icon: <IconHelp />,
     },
     {
-      title: "1 on 1 Consultation",
-      description:
-        "If you donot like EveryAI, we will convince you to like us.",
+      title: "Looking for Personalized Career Guidance?",
+      description: "Connect with experienced advisors who can help you navigate your career path.",
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "Personalized Job Board",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "Having Trouble Finding the Right Job Opportunities?",
+      description: "Discover roles that align with your goals, all in one place.",
       icon: <IconHeart />,
     },
   ];
+  
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
@@ -81,7 +77,7 @@ const Feature = ({
   return (
     <div
       className={cn(
-        "flex flex-col lg:border-r  py-10 relative group dark:border-neutral-800",
+        "flex flex-col lg:border-r py-10 relative group dark:border-neutral-800",
         (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
         index < 4 && "lg:border-b dark:border-neutral-800"
       )}
