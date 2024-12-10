@@ -61,13 +61,9 @@ export const Hero = () => {
         className="text-2xl md:text-4xl lg:text-8xl font-semibold max-w-6xl mx-auto text-center mt-6 font-[SF Pro Text,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif]"
       >
         <Balancer>
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Super
-          </span>
+          <span className="text-gradient-animation">Super</span>
           form{" "}
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            AI
-          </span>
+          <span className="text-gradient-animation">AI</span>
         </Balancer>
       </motion.h1>
       <div className="relative h-[2.5rem] md:h-[3rem] lg:h-[4rem] flex items-center justify-center overflow-hidden mt-2">

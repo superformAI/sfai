@@ -26,4 +26,30 @@ html {
   .text-balance {
     text-wrap: balance;
   }
+
+  .text-gradient-animation {
+    background: linear-gradient(
+      -45deg,
+      #3b82f6,
+      #a855f7,
+      #ec4899,
+      #3b82f6
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-move 6s ease infinite;
+  }
+
+  @keyframes gradient-move {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }

@@ -7,20 +7,16 @@ import { motion } from "framer-motion";
 
 const navItems = [
   {
-    title: "Pricing",
-    link: "/pricing",
-  },
-  {
-    title: "Blog",
-    link: "/blog",
+    title: "About Us",
+    link: "/about",
   },
   {
     title: "Contact Us",
     link: "/contact",
   },
   {
-    title: "About Us", // New About link
-    link: "/about",
+    title: "Waitlist", // Add Waitlist link here
+    link: "/waitlist", // Update to reflect the correct path
   },
 ];
 

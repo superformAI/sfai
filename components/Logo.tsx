@@ -12,8 +12,8 @@ export const Logo = () => {
       <Image
         src="/logos/sf.png"
         alt="Superform AI Logo"
-        width={32}  // Increased size
-        height={32} // Increased size
+        width={38}  // Increased size
+        height={38} // Increased size
         className="h-8 w-8"
       />
       <span className="font-medium text-black dark:text-white">Superform AI</span>
