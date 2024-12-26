@@ -1,4 +1,3 @@
-// pages/about/page.tsx
 "use client";
 
 import React from "react";
@@ -83,23 +82,9 @@ const AboutPage = () => {
         <div className="mt-16 max-w-5xl text-left mx-auto">
           <h2 className="text-2xl font-semibold">Why We Built This Platform</h2>
           <p className="mt-4 text-lg text-muted">
-            Our goal is to create a platform that democratizes career
-            opportunities for students everywhere. We know how hard it can be to
-            navigate the job market, especially if you’re coming from a
-            non-traditional background. My co-founder and I went through this
-            journey ourselves: not knowing how to build a strong resume, how to
-            leverage AI tools effectively, or how to project confidence in an
-            interview. As first-generation immigrants, we didn’t have mentors to
-            guide us or family connections to help us land our first roles. We
-            want to change that for others.
+            Our goal is to create a platform that democratizes career opportunities for students everywhere. We know how hard it can be to navigate the job market, especially if you’re coming from a non-traditional background. My co-founder and I went through this journey ourselves: not knowing how to build a strong resume, how to leverage AI tools effectively, or how to project confidence in an interview. As first-generation immigrants, we didn’t have mentors to guide us or family connections to help us land our first roles. We want to change that for others.
             <br /><br />
-            Think of us as your career companion, here to SUPERCHARGE job hunting,
-            make it more transparent, and reduce the stress. We’re building
-            features that cover everything from skill building and resume
-            creation to AI-driven interview prep and job matching—all tailored
-            to help you reach your aspirations. Our mission is to make sure
-            that no one, regardless of where they start, has to go through this
-            journey alone.
+            Think of us as your career companion, here to SUPERCHARGE job hunting, make it more transparent, and reduce the stress. We’re building features that cover everything from skill building and resume creation to AI-driven interview prep and job matching—all tailored to help you reach your aspirations. Our mission is to make sure that no one, regardless of where they start, has to go through this journey alone.
           </p>
         </div>
 
@@ -107,12 +92,7 @@ const AboutPage = () => {
         <div className="mt-12 max-w-5xl text-left mx-auto">
           <h3 className="text-2xl font-semibold">A Note on Privacy</h3>
           <p className="mt-4 text-lg text-muted">
-            At our core, we're committed to respecting your privacy. We believe
-            in transparency and control over your personal information. We use
-            your data only to enhance your experience on our platform, providing
-            personalized job suggestions, skill-building tools, and relevant
-            career guidance. Your data is yours, and we’ll always let you decide
-            how it’s used.
+            At our core, we&apos;re committed to respecting your privacy. We believe in transparency and control over your personal information. We use your data only to enhance your experience on our platform, providing personalized job suggestions, skill-building tools, and relevant career guidance. Your data is yours, and we’ll always let you decide how it’s used.
           </p>
         </div>
 

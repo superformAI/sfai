@@ -22,7 +22,7 @@ export const Hero = () => {
     }, 4000); // Change slogan every 4 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [slogans.length]); // Add `slogans.length` to the dependency array
 
   return (
     <div className="flex flex-col min-h-screen pt-20 md:pt-40 relative overflow-hidden">
