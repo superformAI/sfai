@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 
 import Link from "next/link";
-import { supabase } from "@/lib/supabaseClient"; // Supabase client
+import { supabase } from "@/lib/supabaseClient";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -54,7 +54,6 @@ export function ContactForm() {
   // Supabase integration for form submission
   async function onSubmit(values: LoginUser) {
     try {
-      // Insert form data into Supabase table
       const { error } = await supabase.from("contact_messages").insert([
         {
           full_name: values.name,
@@ -68,8 +67,8 @@ export function ContactForm() {
         console.error("Supabase error:", error.message);
         alert("Failed to submit your message. Please try again.");
       } else {
-        setSubmitted(true); // Show success message
-        form.reset(); // Reset form on success
+        setSubmitted(true);
+        form.reset();
       }
     } catch (e) {
       console.error("Unexpected error:", e);
@@ -101,128 +100,120 @@ export function ContactForm() {
           </div>
 
           <div className="py-10">
-            <div>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-6"
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="space-y-6"
+              aria-label="Contact Form"
+            >
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                    >
+                      Full Name <span className="text-red-500">*</span>
+                    </label>
+                    <FormControl>
+                      <input
+                        id="name"
+                        type="text"
+                        placeholder="Elon Musk"
+                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                    >
+                      Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <FormControl>
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="hello@johndoe.com"
+                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="company"
+                render={({ field }) => (
+                  <FormItem>
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                    >
+                      Company
+                    </label>
+                    <FormControl>
+                      <input
+                        id="company"
+                        type="text"
+                        placeholder="Superform AI"
+                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                    >
+                      Message
+                    </label>
+                    <FormControl>
+                      <textarea
+                        id="message"
+                        rows={5}
+                        placeholder="Enter your message here"
+                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button className="w-full">Submit</Button>
+            </form>
+            {submitted && (
+              <div
+                className="mt-4 text-center text-green-600 dark:text-green-400"
+                aria-live="polite"
               >
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                      >
-                        Full Name <span className="text-red-500">*</span>
-                      </label>
-                      <FormControl>
-                        <div className="mt-2">
-                          <input
-                            id="name"
-                            type="name"
-                            placeholder="Elon Musk"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                            {...field}
-                          />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                      >
-                        Email Address <span className="text-red-500">*</span>
-                      </label>
-                      <FormControl>
-                        <div className="mt-2">
-                          <input
-                            id="email"
-                            type="email"
-                            placeholder="hello@johndoe.com"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                            {...field}
-                          />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="company"
-                  render={({ field }) => (
-                    <FormItem>
-                      <label
-                        htmlFor="company"
-                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                      >
-                        Company
-                      </label>
-                      <FormControl>
-                        <div className="mt-2">
-                          <input
-                            id="company"
-                            type="company"
-                            placeholder="Superform AI"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                            {...field}
-                          />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                      >
-                        Message
-                      </label>
-                      <FormControl>
-                        <div className="mt-2">
-                          <textarea
-                            rows={5}
-                            id="message"
-                            placeholder="Enter your message here"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                            {...field}
-                          />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <div>
-                  <Button className="w-full">Submit</Button>
-                </div>
-              </form>
-              {submitted && (
-                <div className="mt-4 text-center text-green-600 dark:text-green-400">
-                  <p>Thank you for joining the waitlist!</p>
-                  <p>Check your email for confirmation. We're excited to have you on this journey!</p>
-                </div>
-              )}
-            </div>
+                <p>Thank you for joining the waitlist!</p>
+                <p>Check your email for confirmation. We&apos;re excited to have you on this journey!</p>
+              </div>
+            )}
           </div>
+
           <div className="flex items-center justify-center space-x-4 py-4">
             {socials.map((social) => (
               <Link href={social.href} key={social.title}>
