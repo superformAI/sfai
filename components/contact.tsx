@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { z } from "zod";
 
 import {
@@ -17,7 +18,6 @@ import { supabase } from "@/lib/supabaseClient"; // Supabase client
 import {
   IconBrandGithub,
   IconBrandLinkedin,
-  IconBrandX,
 } from "@tabler/icons-react";
 import { Button } from "./button";
 
@@ -26,12 +26,12 @@ const formSchema = z.object({
     .string({
       required_error: "Please enter your name",
     })
-    .min(1, "Please enter email"),
+    .min(1, "Please enter your name"),
   email: z
     .string({
       required_error: "Please enter email",
     })
-    .email("Please enter valid email")
+    .email("Please enter a valid email")
     .min(1, "Please enter email"),
   company: z.string().optional(),
   message: z.string().optional(),
@@ -40,6 +40,7 @@ const formSchema = z.object({
 export type LoginUser = z.infer<typeof formSchema>;
 
 export function ContactForm() {
+  const [submitted, setSubmitted] = useState(false); // State for success message
   const form = useForm<LoginUser>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,7 +55,7 @@ export function ContactForm() {
   async function onSubmit(values: LoginUser) {
     try {
       // Insert form data into Supabase table
-      const { data, error } = await supabase.from("contact_messages").insert([
+      const { error } = await supabase.from("contact_messages").insert([
         {
           full_name: values.name,
           email: values.email,
@@ -67,7 +68,7 @@ export function ContactForm() {
         console.error("Supabase error:", error.message);
         alert("Failed to submit your message. Please try again.");
       } else {
-        alert("Message sent successfully!");
+        setSubmitted(true); // Show success message
         form.reset(); // Reset form on success
       }
     } catch (e) {
@@ -77,7 +78,6 @@ export function ContactForm() {
   }
 
   const socials = [
-    
     {
       title: "linkedin",
       href: "https://www.linkedin.com/company/superformai/posts/?feedView=all",
@@ -93,10 +93,10 @@ export function ContactForm() {
         <div className="mx-auto w-full max-w-md">
           <div>
             <h1 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-black dark:text-white">
-            Secure Your Spot Today
+              Secure Your Spot Today
             </h1>
-            <p className="mt-4 text-muted dark:text-muted-dark  text-sm max-w-sm">
-            Join the waitlist for exclusive early beta access to revolutionary AI tools. Don’t miss your chance to stay ahead of the curve!.
+            <p className="mt-4 text-muted dark:text-muted-dark text-sm max-w-sm">
+              Join the waitlist for exclusive early beta access to revolutionary AI tools. Don’t miss your chance to stay ahead of the curve!
             </p>
           </div>
 
@@ -123,7 +123,7 @@ export function ContactForm() {
                             id="name"
                             type="name"
                             placeholder="Elon Musk"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
@@ -149,7 +149,7 @@ export function ContactForm() {
                             id="email"
                             type="email"
                             placeholder="hello@johndoe.com"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
@@ -175,7 +175,7 @@ export function ContactForm() {
                             id="company"
                             type="company"
                             placeholder="Superform AI"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
@@ -201,7 +201,7 @@ export function ContactForm() {
                             rows={5}
                             id="message"
                             placeholder="Enter your message here"
-                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
                             {...field}
                           />
                         </div>
@@ -215,6 +215,12 @@ export function ContactForm() {
                   <Button className="w-full">Submit</Button>
                 </div>
               </form>
+              {submitted && (
+                <div className="mt-4 text-center text-green-600 dark:text-green-400">
+                  <p>Thank you for joining the waitlist!</p>
+                  <p>Check your email for confirmation. We're excited to have you on this journey!</p>
+                </div>
+              )}
             </div>
           </div>
           <div className="flex items-center justify-center space-x-4 py-4">

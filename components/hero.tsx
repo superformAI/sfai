@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Balancer from "react-wrap-balancer";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { WorldMap } from "@/components/ui/world-map";
 
 export const Hero = () => {
   const router = useRouter();
@@ -129,29 +128,6 @@ export const Hero = () => {
           <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
         </button>
       </motion.div>
-      {/* WorldMap Section */}
-      <div className="mt-12">
-        <WorldMap
-          dots={[
-            {
-              start: { lat: 64.2008, lng: -149.4937 }, // Alaska
-              end: { lat: 34.0522, lng: -118.2437 }, // Los Angeles
-            },
-            {
-              start: { lat: -15.7975, lng: -47.8919 }, // Brazil
-              end: { lat: 51.5074, lng: -0.1278 }, // London
-            },
-            {
-              start: { lat: 51.5074, lng: -0.1278 }, // London
-              end: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            },
-            {
-              start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-              end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
-            },
-          ]}
-        />
-      </div>
     </div>
   );
 };
