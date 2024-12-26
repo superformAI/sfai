@@ -14,10 +14,6 @@ const navItems = [
     title: "Contact Us",
     link: "/contact",
   },
-  {
-    title: "Waitlist", // Add Waitlist link here
-    link: "/waitlist", // Update to reflect the correct path
-  },
 ];
 
 export function NavBar() {

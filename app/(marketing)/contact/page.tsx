@@ -28,15 +28,14 @@ export default function PricingPage() {
                 "font-semibold text-xl text-center dark:text-muted-dark text-muted"
               )}
             >
-              Every AI is used by thousands of users
+             Superform AI is gearing up to revolutionize career growth
             </p>
             <p
               className={cn(
                 "font-normal text-base text-center text-neutral-500 dark:text-neutral-200 mt-8"
               )}
             >
-              With lots of AI applications around, Everything AI stands out with
-              its state of the art Shitposting capabilities.
+              In a world full of AI platforms, Superform AI redefines the future of careers with its cutting-edge tools designed to empower early talent and professionals
             </p>
           </div>
           <HorizontalGradient className="top-20" />

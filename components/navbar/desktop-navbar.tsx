@@ -67,7 +67,7 @@ export const DesktopNavbar = ({ navItems }: Props) => {
       </div>
       <div className="flex space-x-2 items-center">
         <ModeToggle />
-        <Button as={Link} href="/(marketing)/waitlist">
+        <Button as={Link} href="/contact">
           Join Waitlist
         </Button>
       </div>

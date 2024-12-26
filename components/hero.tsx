@@ -2,15 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Balancer from "react-wrap-balancer";
-import { Button } from "./button";
-import { HiArrowRight } from "react-icons/hi2";
-import { Badge } from "./badge";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { Link } from "next-view-transitions";
+import { WorldMap } from "@/components/ui/world-map";
 
 export const Hero = () => {
   const router = useRouter();
+
   const slogans = [
     "Your Future, Our Focus",
     "Create the Career You Desire",
@@ -28,25 +26,6 @@ export const Hero = () => {
 
   return (
     <div className="flex flex-col min-h-screen pt-20 md:pt-40 relative overflow-hidden">
-      <motion.div
-        initial={{
-          y: 40,
-          opacity: 0,
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-        }}
-        transition={{
-          ease: "easeOut",
-          duration: 0.5,
-        }}
-        className="flex justify-center"
-      >
-        <Badge onClick={() => router.push("/blog/top-5-llm-of-all-time")}>
-          Join the Waitlist to be part of early beta access!
-        </Badge>
-      </motion.div>
       <motion.h1
         initial={{
           opacity: 0,
@@ -105,6 +84,7 @@ export const Hero = () => {
           Superform AI brings together career-focused tools, seamlessly integrating modern AI to boost your professional journey—all in one platform.
         </Balancer>
       </motion.p>
+      {/* Call to Action Button */}
       <motion.div
         initial={{
           y: 80,
@@ -119,19 +99,59 @@ export const Hero = () => {
           duration: 0.5,
           delay: 0.4,
         }}
-        className="flex items-center gap-4 justify-center mt-6 relative z-10"
+        className="flex items-center justify-center mt-6 relative z-10"
       >
-        <Button>Join the waitlist to be part of early beta access!</Button>
-        <Button
-          variant="simple"
-          as={Link}
-          href="/contact"
-          className="flex space-x-2 items-center group"
+        <button
+          className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block"
+          onClick={() => router.push("/contact")}
         >
-          <span>Contact us</span>
-          <HiArrowRight className="text-muted group-hover:translate-x-1 stroke-[1px] h-3 w-3 transition-transform duration-200 dark:text-muted-dark" />
-        </Button>
+          <span className="absolute inset-0 overflow-hidden rounded-full">
+            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          </span>
+          <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10">
+            <span>Join the Waitlist to be part of early beta access!</span>
+            <svg
+              fill="none"
+              height="16"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.75 8.75L14.25 12L10.75 15.25"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+              />
+            </svg>
+          </div>
+          <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+        </button>
       </motion.div>
+      {/* WorldMap Section */}
+      <div className="mt-12">
+        <WorldMap
+          dots={[
+            {
+              start: { lat: 64.2008, lng: -149.4937 }, // Alaska
+              end: { lat: 34.0522, lng: -118.2437 }, // Los Angeles
+            },
+            {
+              start: { lat: -15.7975, lng: -47.8919 }, // Brazil
+              end: { lat: 51.5074, lng: -0.1278 }, // London
+            },
+            {
+              start: { lat: 51.5074, lng: -0.1278 }, // London
+              end: { lat: 28.6139, lng: 77.209 }, // New Delhi
+            },
+            {
+              start: { lat: 28.6139, lng: 77.209 }, // New Delhi
+              end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+            },
+          ]}
+        />
+      </div>
     </div>
   );
 };

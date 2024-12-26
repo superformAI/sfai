@@ -13,16 +13,13 @@ import {
 } from "@/components/ui/form";
 
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient"; // Supabase client
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandX,
 } from "@tabler/icons-react";
-import Password from "./password";
 import { Button } from "./button";
-import { Logo } from "./Logo";
 
 const formSchema = z.object({
   name: z
@@ -36,16 +33,8 @@ const formSchema = z.object({
     })
     .email("Please enter valid email")
     .min(1, "Please enter email"),
-  company: z
-    .string({
-      required_error: "Please enter your company's name",
-    })
-    .min(1, "Please enter your company's name"),
-  message: z
-    .string({
-      required_error: "Please enter your message",
-    })
-    .min(1, "Please enter your message"),
+  company: z.string().optional(),
+  message: z.string().optional(),
 });
 
 export type LoginUser = z.infer<typeof formSchema>;
@@ -61,30 +50,37 @@ export function ContactForm() {
     },
   });
 
+  // Supabase integration for form submission
   async function onSubmit(values: LoginUser) {
     try {
-      console.log("submitted form", values);
-    } catch (e) {}
+      // Insert form data into Supabase table
+      const { data, error } = await supabase.from("contact_messages").insert([
+        {
+          full_name: values.name,
+          email: values.email,
+          company: values.company || null,
+          message: values.message || null,
+        },
+      ]);
+
+      if (error) {
+        console.error("Supabase error:", error.message);
+        alert("Failed to submit your message. Please try again.");
+      } else {
+        alert("Message sent successfully!");
+        form.reset(); // Reset form on success
+      }
+    } catch (e) {
+      console.error("Unexpected error:", e);
+      alert("Something went wrong. Please try again.");
+    }
   }
 
   const socials = [
-    {
-      title: "twitter",
-      href: "https://twitter.com/mannupaaji",
-      icon: (
-        <IconBrandX className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
-      ),
-    },
-    {
-      title: "github",
-      href: "https://github.com/manuarora700",
-      icon: (
-        <IconBrandGithub className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
-      ),
-    },
+    
     {
       title: "linkedin",
-      href: "https://linkedin.com/manuarora28",
+      href: "https://www.linkedin.com/company/superformai/posts/?feedView=all",
       icon: (
         <IconBrandLinkedin className="h-5 w-5 text-muted dark:text-muted-dark hover:text-black" />
       ),
@@ -97,11 +93,10 @@ export function ContactForm() {
         <div className="mx-auto w-full max-w-md">
           <div>
             <h1 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-black dark:text-white">
-              Contact Us
+            Secure Your Spot Today
             </h1>
             <p className="mt-4 text-muted dark:text-muted-dark  text-sm max-w-sm">
-              Please reach out to us and we will get back to you at the speed of
-              light.
+            Join the waitlist for exclusive early beta access to revolutionary AI tools. Don’t miss your chance to stay ahead of the curve!.
             </p>
           </div>
 
@@ -120,7 +115,7 @@ export function ContactForm() {
                         htmlFor="name"
                         className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
                       >
-                        Full Name
+                        Full Name <span className="text-red-500">*</span>
                       </label>
                       <FormControl>
                         <div className="mt-2">
@@ -146,7 +141,7 @@ export function ContactForm() {
                         htmlFor="email"
                         className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
                       >
-                        Email address
+                        Email Address <span className="text-red-500">*</span>
                       </label>
                       <FormControl>
                         <div className="mt-2">
@@ -198,7 +193,7 @@ export function ContactForm() {
                         htmlFor="message"
                         className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
                       >
-                        message
+                        Message
                       </label>
                       <FormControl>
                         <div className="mt-2">

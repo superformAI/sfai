@@ -10,10 +10,9 @@ import Image from "next/image";
 export const Testimonials = () => {
   return (
     <div className="relative z-20 py-10 md:py-40">
-      <Heading as="h2">Loved by people all over the universe</Heading>
+      <Heading as="h2">Here is what our early beta testers had to say!</Heading>
       <Subheading className="text-center max-w-lg mx-auto">
-        Every AI is used by millions of people around the globe.Our APIs have
-        fan bases and people fight for us over twitter.
+        Superform AI is already loved by many people around the globe. Students are pleased and we cannot wait to release worldwide!.
       </Subheading>
       <TestimonialGrid />
     </div>
@@ -31,158 +30,96 @@ const testimonials = [
   {
     name: "Faraaz Rahman",
     quote:
-      "This AI has completely changed how I work! It's an essential tool for efficiency and creativity.",
-    src: "/FR.png", // Ensure FR.png is in the correct folder, like 'public'
+      "Superform AI has revolutionized my workflow. It's an essential tool for streamlining processes and boosting creativity!",
+    src: "/FR.png",
     designation: "Software Engineer",
   },
   {
     name: "Nuha Khan",
     quote:
-      "I made a soap with the help of AI, it was so easy to use. I'm so glad this happened because it revolutionized my entire business model and production process.",
+      "With Superform AI, I transformed my business operations. It simplified complex tasks and brought my vision to life!",
     src: "/NK.png",
     designation: "Data Analyst",
   },
   {
     name: "Timothy Li",
     quote:
-      "This AI has transformed the way I work! It's like having a brilliant assistant who knows exactly what I need before I even ask.",
+      "Superform AI is like having a personal career coach. It’s intuitive, smart, and exactly what I needed to succeed.",
     src: "/TL.png",
     designation: "Software Engineer",
   },
   {
     name: "Mussadiq Khan",
     quote:
-      "Absolutely revolutionary, a game-changer for our industry. It has streamlined our processes and enhanced our productivity dramatically.",
+      "A game-changer for career growth. Superform AI streamlined my job search and helped me land my dream role.",
     src: "/MK.png",
-    designation: "Cyber Security Engineer",
+    designation: "Cybersecurity Engineer",
   },
   {
     name: "Eva Ford",
     quote:
-      "I can't imagine going back to how things were before this AI. It has not only improved my work efficiency but also my daily life.",
+      "Superform AI makes building a professional profile effortless. It’s a must-have for any designer looking to stand out.",
     src: "/EF.png",
     designation: "UI/UX Designer",
   },
   {
     name: "Malik Anwar",
     quote:
-      "It's like having a superpower! This AI tool has given us the ability to do things we never thought were possible in our field.",
+      "Superform AI is a powerhouse. It helped me discover the right certifications and projects to advance my career.",
     src: "/MA.png",
     designation: "Senior Consultant",
   },
   {
     name: "Muhammad Abdullah",
     quote:
-      "The efficiency it brings is unmatched. It's a vital tool that has helped us cut costs and improve our end product significantly.",
+      "This platform brings unmatched efficiency. Superform AI is vital for building a solid career foundation.",
     src: "/AB.png",
     designation: "Software Engineer",
   },
   {
     name: "Brandon Wilner",
     quote:
-      "A robust solution that fits perfectly into our workflow. It has enhanced our team's capabilities and allowed us to tackle more complex projects.",
+      "Superform AI helped me break into cybersecurity with personalized guidance and tools. It’s incredible!",
     src: "/BW.png",
-    designation: "Cyber Security Engineer",
+    designation: "Cybersecurity Engineer",
   },
   {
     name: "Maniha Malik",
     quote:
-      "It's incredibly intuitive and easy to use. Even those without technical expertise can leverage its power to improve their workflows.",
+      "Superform AI’s intuitive interface made it easy to create a professional resume and prepare for interviews.",
     src: "/MM.png",
     designation: "Software Engineer",
   },
   {
     name: "Marc Reghina",
     quote:
-      "It has saved us countless hours. Highly recommended for anyone looking to enhance their efficiency and productivity.",
+      "Superform AI saved me hours of work. It’s a no-brainer for anyone looking to grow their career quickly.",
     src: "/MR.png",
-    designation: "Cyber Security Engineer",
+    designation: "Cybersecurity Engineer",
   },
   {
     name: "Roshni Kaur",
     quote:
-      "A must-have tool for any professional. It's revolutionized the way we approach problem-solving and decision-making.",
+      "A must-have platform for professionals. Superform AI made finding relevant opportunities so much easier.",
     src: "/RK.png",
     designation: "Software Engineer",
   },
   {
     name: "Connor Madden",
     quote:
-      "The results are always impressive. This AI has helped us to not only meet but exceed our performance targets.",
+      "Superform AI exceeded all my expectations. It gave me the edge I needed to stand out in my industry.",
     src: "/CM.png",
     designation: "Performance Manager",
   },
   {
     name: "Onkar Singh",
     quote:
-      "It helps us achieve what was once thought impossible. The AI's capabilities are groundbreaking and have opened new avenues for us.",
+      "Superform AI’s tailored career guidance helped me land opportunities I never thought were possible.",
     src: "/OS.png",
     designation: "Security Engineer",
   },
-  {
-    name: "Niya Patel",
-    quote:
-      "Transformative technology with real impact. It has streamlined our operations and brought unprecedented efficiency to our processes.",
-    src: "https://i.pravatar.cc/150?img=14",
-    designation: "Technology Strategist",
-  },
-  {
-    name: "Mia Turner",
-    quote:
-      "It's simply revolutionary! The way it integrates with our existing systems and enhances them is nothing short of miraculous.",
-    src: "https://i.pravatar.cc/150?img=15",
-    designation: "Systems Integrator",
-  },
-  {
-    name: "Nathan Hill",
-    quote:
-      "The best investment we've made in years. It's not just a tool; it's a game-changer that has propelled our business forward.",
-    src: "https://i.pravatar.cc/150?img=16",
-    designation: "Investment Analyst",
-  },
-  {
-    name: "Olivia Scott",
-    quote:
-      "It consistently exceeds our expectations. Its adaptability and precision make it indispensable for our daily operations.",
-    src: "https://i.pravatar.cc/150?img=17",
-    designation: "Quality Assurance Manager",
-  },
-  {
-    name: "Peter White",
-    quote:
-      "A seamless integration into our daily tasks. It has enhanced our productivity and allowed us to focus on more strategic initiatives.",
-    src: "https://i.pravatar.cc/150?img=18",
-    designation: "Strategic Planner",
-  },
-  {
-    name: "Quinn Taylor",
-    quote:
-      "It's a game-changer for our business. The insights it provides are invaluable and have driven substantial growth for us.",
-    src: "https://i.pravatar.cc/150?img=19",
-    designation: "Growth Manager",
-  },
-  {
-    name: "Rachel Black",
-    quote:
-      "The support team is as impressive as the technology itself. They ensure we maximize the utility of the AI in our operations.",
-    src: "https://i.pravatar.cc/150?img=20",
-    designation: "Client Support Coordinator",
-  },
-  {
-    name: "Samuel Lee",
-    quote:
-      "It's the future, now. Adopting this AI has put us years ahead of the competition in terms of operational efficiency and innovation.",
-    src: "https://i.pravatar.cc/150?img=21",
-    designation: "Futurist",
-  },
-  {
-    name: "Tina Brooks",
-    quote:
-      "It has completely changed the way we operate. The AI's ability to analyze and optimize our processes is phenomenal.",
-    src: "https://i.pravatar.cc/150?img=22",
-    designation: "Process Analyst",
-  },
 ];
+
 
 function Testimonial({
   name,
