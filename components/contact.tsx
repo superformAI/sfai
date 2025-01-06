@@ -112,7 +112,7 @@ export function ContactForm() {
             </h1>
             <p className="mt-4 text-muted dark:text-muted-dark text-sm max-w-sm">
               Join the waitlist for exclusive early beta access to revolutionary AI tools.
-              Don't miss your chance to stay ahead of the curve!
+              Don&apos;t miss your chance to stay ahead of the curve!
             </p>
           </div>
 
