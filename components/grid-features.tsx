@@ -18,18 +18,18 @@ export const GridFeatures = () => {
       icon: <IconTerminal2 />,
     },
     {
-      title: "Struggling to Write a Standout Cover Letter?",
-      description: "Get support that makes cover letter writing as simple and impactful as possible.",
+      title: "Unsure of Which Project or Cert to Work on Next?",
+      description: "Stop second-guessing your next steps. We simplify the journey by guiding you to the most impactful projects and certifications, perfectly aligned with your career goals and skill level.",
       icon: <IconEaseInOut />,
     },
     {
-      title: "Worried About ATS Compatibility?",
-      description: "Ensure your application stands out with a system that works for you, not against you.",
+      title: "Struggling to Prepare for Your Interviews?",
+      description: "Let AI drive you to success and get a feel what it's really like to sit in the hot seat of an interview.",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "Need Help Learning Complex Concepts?",
-      description: "Receive personalized guidance that makes learning technical skills manageable and effective.",
+      title: "Wish you Could be Around More Like-minds?",
+      description: "Drop in to weekly seminars discussing new topics and hot industry trends to enhance your knowledge and skillset.",
       icon: <IconCloud />,
     },
     {
@@ -53,7 +53,7 @@ export const GridFeatures = () => {
       icon: <IconHeart />,
     },
   ];
-  
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10">
       {features.map((feature, index) => (

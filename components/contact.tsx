@@ -1,10 +1,8 @@
-"use client";
+"use client"; // Only if you're using Next.js App Router pages
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { z } from "zod";
-
 import {
   Form,
   FormControl,
@@ -12,13 +10,9 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
-import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-} from "@tabler/icons-react";
+import { IconBrandLinkedin } from "@tabler/icons-react";
 import { Button } from "./button";
 
 const formSchema = z.object({
@@ -31,7 +25,7 @@ const formSchema = z.object({
     .string({
       required_error: "Please enter email",
     })
-    .email("Please enter a valid email")
+    .email("Please enter valid email")
     .min(1, "Please enter email"),
   company: z.string().optional(),
   message: z.string().optional(),
@@ -40,7 +34,6 @@ const formSchema = z.object({
 export type LoginUser = z.infer<typeof formSchema>;
 
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false); // State for success message
   const form = useForm<LoginUser>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,10 +44,10 @@ export function ContactForm() {
     },
   });
 
-  // Supabase integration for form submission
   async function onSubmit(values: LoginUser) {
     try {
-      const { error } = await supabase.from("contact_messages").insert([
+      // 1. Insert form data into Supabase table
+      const { data, error } = await supabase.from("contact_messages").insert([
         {
           full_name: values.name,
           email: values.email,
@@ -66,10 +59,33 @@ export function ContactForm() {
       if (error) {
         console.error("Supabase error:", error.message);
         alert("Failed to submit your message. Please try again.");
-      } else {
-        setSubmitted(true);
-        form.reset();
+        return;
       }
+
+      // 2. Send Thank You email using our /api/send-email route
+      try {
+        const response = await fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: values.name,
+            email: values.email,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to send email");
+        }
+      } catch (emailError) {
+        console.error("Email sending error:", emailError);
+        // We still want to show success even if email fails
+      }
+
+      alert("Successfully joined the waitlist! Check your email for confirmation.");
+      form.reset(); // Reset form on success
+
     } catch (e) {
       console.error("Unexpected error:", e);
       alert("Something went wrong. Please try again.");
@@ -95,125 +111,125 @@ export function ContactForm() {
               Secure Your Spot Today
             </h1>
             <p className="mt-4 text-muted dark:text-muted-dark text-sm max-w-sm">
-              Join the waitlist for exclusive early beta access to revolutionary AI tools. Don’t miss your chance to stay ahead of the curve!
+              Join the waitlist for exclusive early beta access to revolutionary AI tools.
+              Don't miss your chance to stay ahead of the curve!
             </p>
           </div>
 
           <div className="py-10">
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6"
-              aria-label="Contact Form"
-            >
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                    >
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <FormControl>
-                      <input
-                        id="name"
-                        type="text"
-                        placeholder="Elon Musk"
-                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                    >
-                      Email Address <span className="text-red-500">*</span>
-                    </label>
-                    <FormControl>
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="hello@johndoe.com"
-                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="company"
-                render={({ field }) => (
-                  <FormItem>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                    >
-                      Company
-                    </label>
-                    <FormControl>
-                      <input
-                        id="company"
-                        type="text"
-                        placeholder="Superform AI"
-                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
-                    >
-                      Message
-                    </label>
-                    <FormControl>
-                      <textarea
-                        id="message"
-                        rows={5}
-                        placeholder="Enter your message here"
-                        className="mt-2 block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button className="w-full">Submit</Button>
-            </form>
-            {submitted && (
-              <div
-                className="mt-4 text-center text-green-600 dark:text-green-400"
-                aria-live="polite"
-              >
-                <p>Thank you for joining the waitlist!</p>
-                <p>Check your email for confirmation. We&apos;re excited to have you on this journey!</p>
-              </div>
-            )}
-          </div>
+            <div>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        Full Name <span className="text-red-500">*</span>
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <input
+                            id="name"
+                            type="text"
+                            placeholder="Elon Musk"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        Email Address <span className="text-red-500">*</span>
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <input
+                            id="email"
+                            type="email"
+                            placeholder="hello@johndoe.com"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="company"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        Company
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <input
+                            id="company"
+                            type="text"
+                            placeholder="Superform AI"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium leading-6 text-neutral-700 dark:text-muted-dark"
+                      >
+                        Message
+                      </label>
+                      <FormControl>
+                        <div className="mt-2">
+                          <textarea
+                            rows={5}
+                            id="message"
+                            placeholder="Enter your message here"
+                            className="block w-full bg-white dark:bg-neutral-900 px-4 rounded-md border-0 py-1.5 shadow-aceternity text-black placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 dark:text-white"
+                            {...field}
+                          />
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
+                <div>
+                  <Button className="w-full">Submit</Button>
+                </div>
+              </form>
+            </div>
+          </div>
           <div className="flex items-center justify-center space-x-4 py-4">
             {socials.map((social) => (
               <Link href={social.href} key={social.title}>

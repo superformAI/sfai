@@ -80,7 +80,7 @@ export const Hero = () => {
         className="text-center mt-6 text-base md:text-xl text-muted dark:text-muted-dark max-w-3xl mx-auto relative z-10"
       >
         <Balancer>
-          Superform AI brings together career-focused tools, seamlessly integrating modern AI to boost your professional journey—all in one platform.
+          Bringing together career-focused tools, seamlessly integrating modern AI to boost your professional journey—all in one platform.
         </Balancer>
       </motion.p>
       {/* Call to Action Button */}
