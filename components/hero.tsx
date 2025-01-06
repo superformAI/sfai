@@ -138,7 +138,6 @@ export const Hero = () => {
           type="module"
           strategy="afterInteractive"
         />
-        {/* @ts-ignore: Ignore TS error for dotlottie-player element */}
         <dotlottie-player
           src="https://lottie.host/09b8e1a9-ee95-404e-8286-49d5e5c7d2f5/YTqfcyxEPO.lottie"
           background="transparent"
