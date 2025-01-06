@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Balancer from "react-wrap-balancer";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
 
 export const Hero = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ export const Hero = () => {
     }, 4000); // Change slogan every 4 seconds
 
     return () => clearInterval(interval);
-  }, [slogans.length]); // Add `slogans.length` to the dependency array
+  }, [slogans.length]);
 
   return (
     <div className="flex flex-col min-h-screen pt-20 md:pt-40 relative overflow-hidden">
@@ -83,6 +84,7 @@ export const Hero = () => {
           Bringing together career-focused tools, seamlessly integrating modern AI to boost your professional journey—all in one platform.
         </Balancer>
       </motion.p>
+
       {/* Call to Action Button */}
       <motion.div
         initial={{
@@ -128,6 +130,26 @@ export const Hero = () => {
           <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
         </button>
       </motion.div>
+
+      {/* Lottie Animation below the button */}
+      <div className="mt-10 flex justify-center">
+        <Script
+          src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+          type="module"
+        />
+        <dotlottie-player
+          src="https://lottie.host/09b8e1a9-ee95-404e-8286-49d5e5c7d2f5/YTqfcyxEPO.lottie"
+          background="transparent"
+          speed="1"
+          style={{
+            width: "80%", // Make it cover the entire width of the container
+            height: "auto", // Maintain aspect ratio
+            maxWidth: "1200px", // Set a maximum width so it doesn't stretch too large
+          }}
+          loop
+          autoplay
+        ></dotlottie-player>
+      </div>
     </div>
   );
 };
