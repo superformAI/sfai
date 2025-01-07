@@ -9,16 +9,14 @@ export const metadata: Metadata = {
   title: "Superform AI",
   description:
     "Everything AI is a platform that provides a wide range of AI tools and services to help you stay on top of your business. Generate images, text and everything else that you need to get your business off the ground.",
-  openGraph: {
-    images: ["https://ai-saas-template-aceternity.vercel.app/banner.png"],
-  },
+  // Removed the openGraph: { images: [...] } property
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <ViewTransitions>
       <html lang="en">
