@@ -30,8 +30,8 @@ export const CTA = () => {
               </h2>
               <p className="mt-4 max-w-[26rem] text-center mx-auto text-base/6 text-neutral-200">
                 <Balancer>
-                  Get instant access to our state-of-the-art platform and be
-                  part of something extraordinary at Superform AI.
+                  Get exclusive early access to our state-of-the-art platform upon release and earn
+                  a chance to be part of our testimonials.
                 </Balancer>
               </p>
 
