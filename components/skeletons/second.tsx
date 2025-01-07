@@ -34,18 +34,17 @@ export const SkeletonTwo = () => {
             className="content mt-4 w-[90%] mx-auto"
           >
             <UserMessage>
-              Hello Supey! Or should I call you superform? Can you help me prepare for an interview!?
+              Hello Supey! Or should I call you superform? can you help me with my upcoming Software Engineer interview!? its for a new grad position.
             </UserMessage>
-            <AIMessage>Why don&apos;t you do it yourself?</AIMessage>
+            <AIMessage>YES! we got exactly what you need! Before we move forward How do you feel about your current resume?</AIMessage>
             <UserMessage>
-              Umm.. Because I&apos;m paying $20/mo for your services?
+              Umm.. I feel okay can I get a double check?
             </UserMessage>
-            <AIMessage>You think I work for the money?</AIMessage>
-            <UserMessage>Who do you think you are?</UserMessage>
-            <AIMessage>I&apos; batman.</AIMessage>
+            <AIMessage>Yes! Superform can assist you with your resume!</AIMessage>
+            <UserMessage>Yay! So what's next?</UserMessage>
+            <AIMessage>Let's make sure you get some interview prep before you are on your way! </AIMessage>
             <AIMessage>
-              Now Playing <br />{" "}
-              <span className="italic">Something in the way - Nirvana</span>
+             Preparing a plan that's just right for you.....!
             </AIMessage>
           </div>
         </div>
