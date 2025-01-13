@@ -35,20 +35,6 @@ const testimonials = [
     designation: "Software Engineer",
   },
   {
-    name: "Nuha Khan",
-    quote:
-      "With Superform AI, I transformed my business operations. It simplified complex tasks and brought my vision to life!",
-    src: "/NK.png",
-    designation: "Data Analyst",
-  },
-  {
-    name: "Timothy Li",
-    quote:
-      "Superform AI is like having a personal career coach. It’s intuitive, smart, and exactly what I needed to succeed.",
-    src: "/TL.png",
-    designation: "Software Engineer",
-  },
-  {
     name: "Mussadiq Khan",
     quote:
       "A game-changer for career growth. Superform AI streamlined my job search and helped me land my dream role.",
@@ -63,13 +49,6 @@ const testimonials = [
     designation: "UI/UX Designer",
   },
   {
-    name: "Malik Anwar",
-    quote:
-      "Superform AI is a powerhouse. It helped me discover the right certifications and projects to advance my career.",
-    src: "/MA.png",
-    designation: "Senior Consultant",
-  },
-  {
     name: "Muhammad Abdullah",
     quote:
       "This platform brings unmatched efficiency. Superform AI is vital for building a solid career foundation.",
@@ -77,39 +56,11 @@ const testimonials = [
     designation: "Software Engineer",
   },
   {
-    name: "Brandon Wilner",
-    quote:
-      "Superform AI helped me break into cybersecurity with personalized guidance and tools. It’s incredible!",
-    src: "/BW.png",
-    designation: "Cybersecurity Engineer",
-  },
-  {
-    name: "Maniha Malik",
-    quote:
-      "Superform AI’s intuitive interface made it easy to create a professional resume and prepare for interviews.",
-    src: "/MM.png",
-    designation: "Software Engineer",
-  },
-  {
-    name: "Marc Reghina",
-    quote:
-      "Superform AI saved me hours of work. It’s a no-brainer for anyone looking to grow their career quickly.",
-    src: "/MR.png",
-    designation: "Cybersecurity Engineer",
-  },
-  {
-    name: "Roshni Kaur",
+    name: "Manyjot Dughal",
     quote:
       "A must-have platform for professionals. Superform AI made finding relevant opportunities so much easier.",
-    src: "/RK.png",
+    src: "/MD.png",
     designation: "Software Engineer",
-  },
-  {
-    name: "Connor Madden",
-    quote:
-      "Superform AI exceeded all my expectations. It gave me the edge I needed to stand out in my industry.",
-    src: "/CM.png",
-    designation: "Performance Manager",
   },
   {
     name: "Onkar Singh",
